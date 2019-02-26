@@ -59,3 +59,11 @@ typings/
 
 # next.js build output
 .next
+
+# build dirs
+dist
+.cache
+
+# bs / reason dirs
+lib
+.merlin

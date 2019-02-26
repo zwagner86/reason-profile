@@ -1,0 +1,36 @@
+{
+  "name": "reason-profile",
+  "version": "1.0.0",
+  "description": "Personal site done with ReasonML, ReasonReact, and Parcel.",
+  "main": "main.js",
+  "scripts": {
+    "start": "parcel index.html --open",
+    "build": "parcel build index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zwagner86/reason-profile.git"
+  },
+  "keywords": [
+    "ReasonML",
+    "ReasonReact",
+    "Parcel"
+  ],
+  "author": "Zachary Wagner",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zwagner86/reason-profile/issues"
+  },
+  "homepage": "https://github.com/zwagner86/reason-profile#readme",
+  "devDependencies": {
+    "bs-platform": "4.0.18",
+    "bsb-js": "1.1.7",
+    "parcel-bundler": "1.11.0"
+  },
+  "dependencies": {
+    "react": "16.8.3",
+    "react-dom": "16.8.3",
+    "reason-react": "0.5.3"
+  }
+}
