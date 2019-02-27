@@ -12,6 +12,10 @@ type skillData = {
     whatDescription: string
 };
 
+type skillDataJson = {
+    data: skillData
+};
+
 type state = {
     languages: list(skillItem),
     frameworks: list(skillItem),
@@ -27,50 +31,25 @@ type action =
 
 let component = ReasonReact.reducerComponent("Skills");
 
-module API = {
-    open Json.Decode;
-    module Promise = Js.Promise;
+module Decode = {
+    let decodeSkill = json =>
+        Json.Decode.{
+            name: json |> field("name", string),
+            logoName: json |> field("logoName", string),
+            star: json |> field("star", bool)
+        };
+    
+    let decodeSkills = json =>
+        Json.Decode.{
+            frameworks: json |> field("frameworks", list(decodeSkill)),
+            languages: json |> field("languages", list(decodeSkill)),
+            whatDescription: json |> field("whatDescription", string)
+        };
 
-    let decodeSkills =
-        field(
-            "data",
-            list(
-                optional(json =>
-                    {
-                        frameworks: field("frameworks", list(skillItem), json),
-                        languages: field("languages", list(skillItem), json),
-                        whatDescription: field("whatDescription", string, json),
-                    }
-                ),
-            ),
-        );
-
-    let getSkills = () =>
-        /*
-        * This is similar to `open Json.Decode`, it allows the Promise functions
-        * to be available within the parentheses
-        */
-        Promise.(
-            Fetch.fetch("https://www.zacharywagner.net/api/v1/skills")
-            |> Promise.then_(Fetch.Response.json)
-            |> Promise.then_(json => decodeSkills(json) |> resolve)
-            |> Promise.then_(skills =>
-                skills
-                |> List.filter(optionalItem =>
-                    switch (optionalItem) {
-                        | Some(_) => true
-                        | None => false
-                    }
-                )
-                |> List.map(item =>
-                    switch (item) {
-                        | Some(item) => item
-                    }
-                )
-                |> resolve
-            )
-            |> Promise.catch_(_err => resolve(self.send(FetchSkillsErrored)))
-        );
+    let decodeSkillsData = json =>
+        Json.Decode.{
+            data: json |> field("data", decodeSkills)
+        };
 };
 
 let make = (_children) => {
@@ -89,25 +68,39 @@ let make = (_children) => {
                     {...state, isLoading: true, hasErrored: false},
                     (
                         self => {
-
+                            Js.Promise.(
+                                Fetch.fetch("https://www.zacharywagner.net/api/v1/skills")
+                                |> then_(Fetch.Response.json)
+                                |> then_(json =>
+                                    json
+                                    |> Decode.decodeSkillsData
+                                    |> (skills => self.send(UpdateSkills(skills)))
+                                    |> resolve
+                                )
+                                |> catch(_err =>
+                                    Js.Promise.resolve(self.send(FetchSkillsErrored))
+                                )
+                                |> ignore
+                            )
                         }
                     )
                 )
-            | UpdateSkills(skillData) =>
+            | UpdateSkills(skillDataJson) =>
                 ReasonReact.Update({
                     isLoading: false,
                     hasErrored: false,
-                    languages: skillData.languages,
-                    frameworks: skillData.frameworks,
-                    whatDescription: skillData.whatDescription
+                    languages: skillDataJson.data.languages,
+                    frameworks: skillDataJson.data.frameworks,
+                    whatDescription: skillDataJson.data.whatDescription
                 })
             | FetchSkillsErrored =>
                 ReasonReact.Update({...state, isLoading: false, hasErrored: true})
         },
+    didMount: self => self.send(FetchSkills),
     render: self => {
-        let menuClass = "Menu";
+        Js.log(self.state);
 
-        <div className=menuClass>
+        <div className="Menu">
             <div className="Menu-links">
                 <a
                     href="https://www.zacharywagner.net"

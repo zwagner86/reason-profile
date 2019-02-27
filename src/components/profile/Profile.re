@@ -7,7 +7,7 @@ let make = (_children) => {
     render: _self => {
         <div className="Profile">
             <ProfileInfo />
-            <div> (ReasonReact.string("This is my app profile")) </div>
+            <Skills />
         </div>
     },
 };
