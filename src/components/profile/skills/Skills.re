@@ -26,7 +26,7 @@ type state = {
 
 type action =
     | FetchSkills
-    | UpdateSkills(skillData)
+    | UpdateSkills(skillDataJson)
     | FetchSkillsErrored;
 
 let component = ReasonReact.reducerComponent("Skills");
@@ -98,39 +98,107 @@ let make = (_children) => {
         },
     didMount: self => self.send(FetchSkills),
     render: self => {
-        Js.log(self.state);
+        let {
+            isLoading,
+            hasErrored,
+            whatDescription,
+            frameworks,
+            languages
+        } = self.state;
 
-        <div className="Menu">
-            <div className="Menu-links">
-                <a
-                    href="https://www.zacharywagner.net"
-                    className="Menu-link"
-                >
-                    (ReasonReact.string("Home"))
-                </a>
-                <a
-                    href="https://www.zacharywagner.net/resume"
-                    className="Menu-link"
-                >
-                    (ReasonReact.string("Resume"))
-                </a>
-                <div className="Menu-link-divider-block">
-                    <div className="Menu-link-divider">
-                        <span>(ReasonReact.string("Other Versions"))</span>
+        <div className="Skills">
+            <div className="Skills-inner">
+                <div className="Skills-section">
+                    <div className="Skills-section-header">(ReasonReact.string("WHO?"))</div>
+                    <div className="Skills-section-info">
+                        <div className="Skills-section-description">
+                            <span>(ReasonReact.string("Hey, what's up? My full name is "))</span>
+                            <span className="Skills-section-highlight">(ReasonReact.string("Zachary "))</span>
+                            <span>(ReasonReact.string("but you can call me "))</span>
+                            <span className="Skills-section-highlight">(ReasonReact.string("Zach"))</span>
+                            <span>(ReasonReact.string(". I am a "))</span>
+                            <span className="Skills-section-highlight">(ReasonReact.string("Software Engineer "))</span>
+                            <span>(ReasonReact.string("with "))</span>
+                            <span className="Skills-section-highlight">(ReasonReact.string("full-stack experience"))</span>
+                            <span>(ReasonReact.string(", but a passion for working in the "))</span>
+                            <span className="Skills-section-highlight">(ReasonReact.string("front-end"))</span>
+                            <span>(ReasonReact.string(". For example, I made this page so I could play around with "))</span>
+                            <span className="Skills-section-highlight">(ReasonReact.string("ReasonML"))</span>
+                            <span>(ReasonReact.string(" and "))</span>
+                            <span className="Skills-section-highlight">(ReasonReact.string("ReasonReact"))</span>
+                            <span>(ReasonReact.string("!"))</span>
+                        </div>
+                    </div>
+                    <div className="Skills-section-info">
+                        <div className="Skills-section-description">
+                            (ReasonReact.string("I also made a versions of this page using React and Vue!  You can get there using the menu.  It really isn't any different.  I just wanted to be able to compare the frameworks firsthand."))
+                        </div>
                     </div>
                 </div>
-                <a
-                    href="https://www.zacharywagner.net"
-                    className="Menu-link"
-                >
-                    (ReasonReact.string("React"))
-                </a>
-                <a
-                    href="https://vue.zacharywagner.net"
-                    className="Menu-link"
-                >
-                    (ReasonReact.string("Vue"))
-                </a>
+                <div className="Skills-section">
+                    <div className="Skills-section-header">(ReasonReact.string("WHAT?"))</div>
+                    (
+                        switch (isLoading, hasErrored) {
+                            | (true, false) =>
+                                <div className="Skills-loader-container">
+                                    <div className="Skills-loader" />
+                                <div>
+                            | (false, true) =>
+                                <div className="Skills-section-error">
+                                    <div className="Skills-section-error-icon">
+                                        (ReasonReact.string("ER"))
+                                    </div>
+                                    (ReasonReact.string("Sorry! Something is wrong with my API!"))
+                                <div>
+                            | (false, false) =>
+                                <div className="Skills-section-info">
+                                    <div className="Skills-section-description">(ReasonReact.string(whatDescription))</div>
+                                    <div className="Skills-languages">
+                                        <div className="Skills-languages-description">(ReasonReact.string("Here are some languages I have experience with:"))</div>
+                                    </div>
+                                    <div className="Skills-frameworks">
+                                        <div className="Skills-frameworks-description">
+                                            (ReasonReact.string("And here are some frameworks, libraries, and tools I've used:"))
+                                        </div>
+                                    </div>
+                                </div>
+                            | _ => ReasonReact.null
+                        }
+                    )
+                </div>
+                <div className="Skills-section">
+                    <div className="Skills-section-header">(ReasonReact.string("WHERE?"))</div>
+                    <div className="Skills-section-info">
+                        <div>
+                            <a
+                                className="Skills-section-employer-link"
+                                href="https://www.spothero.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                (ReasonReact.string("SpotHero"))
+                            </a>
+                        </div>
+                        <div>(ReasonReact.string("December 2016 - Present"))</div>
+                        <div>(ReasonReact.string("Chicago, IL"))</div>
+                        <div>(ReasonReact.string("Front End Engineer"))</div>
+                    </div>
+                    <div className="Skills-section-info">
+                        <div className="Skills-section-employer-link">
+                            <a
+                                className="Skills-section-employer-link"
+                                href="https://www.slalom.com/locations/chicago"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                (ReasonReact.string("Slalom Consulting"))
+                            </a>
+                        </div>
+                        <div>(ReasonReact.string("December 2012 - December 2016"))</div>
+                        <div>(ReasonReact.string("Chicago, IL"))</div>
+                        <div>(ReasonReact.string("Senior Software Engineer"))</div>
+                    </div>
+                </div>
             </div>
         </div>
     },

@@ -55,28 +55,75 @@ function make(_children) {
           /* willUnmount */component[/* willUnmount */6],
           /* willUpdate */component[/* willUpdate */7],
           /* shouldUpdate */component[/* shouldUpdate */8],
-          /* render */(function (_self) {
+          /* render */(function (self) {
+              var match = self[/* state */1];
               return React.createElement("div", {
-                          className: "Menu"
+                          className: "Skills"
                         }, React.createElement("div", {
-                              className: "Menu-links"
-                            }, React.createElement("a", {
-                                  className: "Menu-link",
-                                  href: "https://www.zacharywagner.net"
-                                }, "Home"), React.createElement("a", {
-                                  className: "Menu-link",
-                                  href: "https://www.zacharywagner.net/resume"
-                                }, "Resume"), React.createElement("div", {
-                                  className: "Menu-link-divider-block"
+                              className: "Skills-inner"
+                            }, React.createElement("div", {
+                                  className: "Skills-section"
                                 }, React.createElement("div", {
-                                      className: "Menu-link-divider"
-                                    }, React.createElement("span", undefined, "Other Versions"))), React.createElement("a", {
-                                  className: "Menu-link",
-                                  href: "https://www.zacharywagner.net"
-                                }, "React"), React.createElement("a", {
-                                  className: "Menu-link",
-                                  href: "https://vue.zacharywagner.net"
-                                }, "Vue")));
+                                      className: "Skills-section-header"
+                                    }, "WHO?"), React.createElement("div", {
+                                      className: "Skills-section-info"
+                                    }, React.createElement("div", {
+                                          className: "Skills-section-description"
+                                        }, React.createElement("span", undefined, "Hey, what's up? My full name is "), React.createElement("span", {
+                                              className: "Skills-section-highlight"
+                                            }, "Zachary "), React.createElement("span", undefined, "but you can call me "), React.createElement("span", {
+                                              className: "Skills-section-highlight"
+                                            }, "Zach"), React.createElement("span", undefined, ". I am a "), React.createElement("span", {
+                                              className: "Skills-section-highlight"
+                                            }, "Software Engineer "), React.createElement("span", undefined, "with "), React.createElement("span", {
+                                              className: "Skills-section-highlight"
+                                            }, "full-stack experience"), React.createElement("span", undefined, ", but a passion for working in the "), React.createElement("span", {
+                                              className: "Skills-section-highlight"
+                                            }, "front-end"), React.createElement("span", undefined, ". For example, I made this page so I could play around with "), React.createElement("span", {
+                                              className: "Skills-section-highlight"
+                                            }, "ReasonML"), React.createElement("span", undefined, " and "), React.createElement("span", {
+                                              className: "Skills-section-highlight"
+                                            }, "ReasonReact"), React.createElement("span", undefined, "!"))), React.createElement("div", {
+                                      className: "Skills-section-info"
+                                    }, React.createElement("div", {
+                                          className: "Skills-section-description"
+                                        }, "I also made a versions of this page using React and Vue!  You can get there using the menu.  It really isn't any different.  I just wanted to be able to compare the frameworks firsthand."))), React.createElement("div", {
+                                  className: "Skills-section"
+                                }, React.createElement("div", {
+                                      className: "Skills-section-header"
+                                    }, "WHAT?"), React.createElement("div", {
+                                      className: "Skills-section-info"
+                                    }, React.createElement("div", {
+                                          className: "Skills-section-description"
+                                        }, match[/* whatDescription */2]), React.createElement("div", {
+                                          className: "Skills-languages"
+                                        }, React.createElement("div", {
+                                              className: "Skills-languages-description"
+                                            }, "Here are some languages I have experience with:")), React.createElement("div", {
+                                          className: "Skills-frameworks"
+                                        }, React.createElement("div", {
+                                              className: "Skills-frameworks-description"
+                                            }, "And here are some frameworks, libraries, and tools I've used:")))), React.createElement("div", {
+                                  className: "Skills-section"
+                                }, React.createElement("div", {
+                                      className: "Skills-section-header"
+                                    }, "WHERE?"), React.createElement("div", {
+                                      className: "Skills-section-info"
+                                    }, React.createElement("div", undefined, React.createElement("a", {
+                                              className: "Skills-section-employer-link",
+                                              href: "https://www.spothero.com",
+                                              rel: "noopener noreferrer",
+                                              target: "_blank"
+                                            }, "SpotHero")), React.createElement("div", undefined, "December 2016 - Present"), React.createElement("div", undefined, "Chicago, IL"), React.createElement("div", undefined, "Front End Engineer")), React.createElement("div", {
+                                      className: "Skills-section-info"
+                                    }, React.createElement("div", {
+                                          className: "Skills-section-employer-link"
+                                        }, React.createElement("a", {
+                                              className: "Skills-section-employer-link",
+                                              href: "https://www.slalom.com/locations/chicago",
+                                              rel: "noopener noreferrer",
+                                              target: "_blank"
+                                            }, "Slalom Consulting")), React.createElement("div", undefined, "December 2012 - December 2016"), React.createElement("div", undefined, "Chicago, IL"), React.createElement("div", undefined, "Senior Software Engineer")))));
             }),
           /* initialState */(function (param) {
               return /* record */[
@@ -111,7 +158,8 @@ function make(_children) {
                                 fetch("https://www.zacharywagner.net/api/v1/skills").then((function (prim) {
                                             return prim.json();
                                           })).then((function (json) {
-                                          return Promise.resolve((console.log(decodeSkillsData(json)), /* () */0));
+                                          var skills = decodeSkillsData(json);
+                                          return Promise.resolve(Curry._1(self[/* send */3], /* UpdateSkills */[skills]));
                                         })).catch((function (_err) {
                                         return Promise.resolve(Curry._1(self[/* send */3], /* FetchSkillsErrored */1));
                                       }));
@@ -120,11 +168,11 @@ function make(_children) {
                           ]);
                 }
               } else {
-                var skillData = action[0];
+                var skillDataJson = action[0];
                 return /* Update */Block.__(0, [/* record */[
-                            /* languages */skillData[/* languages */0],
-                            /* frameworks */skillData[/* frameworks */1],
-                            /* whatDescription */skillData[/* whatDescription */2],
+                            /* languages */skillDataJson[/* data */0][/* languages */0],
+                            /* frameworks */skillDataJson[/* data */0][/* frameworks */1],
+                            /* whatDescription */skillDataJson[/* data */0][/* whatDescription */2],
                             /* isLoading */false,
                             /* hasErrored */false
                           ]]);
