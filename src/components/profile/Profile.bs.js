@@ -3,8 +3,8 @@
 
 var React = require("react");
 var ReasonReact = require("reason-react/src/ReasonReact.js");
-var Skills$Whatever = require("./skills/Skills.bs.js");
-var ProfileInfo$Whatever = require("./profile-info/ProfileInfo.bs.js");
+var Skills$ReasonProfile = require("./skills/Skills.bs.js");
+var ProfileInfo$ReasonProfile = require("./profile-info/ProfileInfo.bs.js");
 
 require('./Profile.css')
 ;
@@ -25,7 +25,7 @@ function make(_children) {
           /* render */(function (_self) {
               return React.createElement("div", {
                           className: "Profile"
-                        }, ReasonReact.element(undefined, undefined, ProfileInfo$Whatever.make(/* array */[])), ReasonReact.element(undefined, undefined, Skills$Whatever.make(/* array */[])));
+                        }, ReasonReact.element(undefined, undefined, ProfileInfo$ReasonProfile.make(/* array */[])), ReasonReact.element(undefined, undefined, Skills$ReasonProfile.make(/* array */[])));
             }),
           /* initialState */component[/* initialState */10],
           /* retainedProps */component[/* retainedProps */11],

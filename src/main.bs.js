@@ -3,11 +3,11 @@
 
 var ReactDOMRe = require("reason-react/src/ReactDOMRe.js");
 var ReasonReact = require("reason-react/src/ReasonReact.js");
-var App$Whatever = require("./App.bs.js");
+var App$ReasonProfile = require("./App.bs.js");
 
 require('./main.css')
 ;
 
-ReactDOMRe.renderToElementWithId(ReasonReact.element(undefined, undefined, App$Whatever.make(/* array */[])), "app");
+ReactDOMRe.renderToElementWithId(ReasonReact.element(undefined, undefined, App$ReasonProfile.make(/* array */[])), "app");
 
 /*  Not a pure module */

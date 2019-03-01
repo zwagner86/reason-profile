@@ -3,8 +3,8 @@
 
 var React = require("react");
 var ReasonReact = require("reason-react/src/ReasonReact.js");
-var Menu$Whatever = require("./components/common/menu/Menu.bs.js");
-var Profile$Whatever = require("./components/profile/Profile.bs.js");
+var Menu$ReasonProfile = require("./components/common/menu/Menu.bs.js");
+var Profile$ReasonProfile = require("./components/profile/Profile.bs.js");
 
 var component = ReasonReact.statelessComponent("App");
 
@@ -20,7 +20,7 @@ function make(_children) {
           /* willUpdate */component[/* willUpdate */7],
           /* shouldUpdate */component[/* shouldUpdate */8],
           /* render */(function (_self) {
-              return React.createElement("div", undefined, ReasonReact.element(undefined, undefined, Menu$Whatever.make(/* array */[])), ReasonReact.element(undefined, undefined, Profile$Whatever.make(/* array */[])));
+              return React.createElement("div", undefined, ReasonReact.element(undefined, undefined, Menu$ReasonProfile.make(/* array */[])), ReasonReact.element(undefined, undefined, Profile$ReasonProfile.make(/* array */[])));
             }),
           /* initialState */component[/* initialState */10],
           /* retainedProps */component[/* retainedProps */11],

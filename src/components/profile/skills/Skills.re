@@ -29,8 +29,6 @@ type action =
     | UpdateSkills(skillDataJson)
     | FetchSkillsErrored;
 
-let component = ReasonReact.reducerComponent("Skills");
-
 module Decode = {
     let decodeSkill = json =>
         Json.Decode.{
@@ -51,6 +49,62 @@ module Decode = {
             data: json |> field("data", decodeSkills)
         };
 };
+
+let renderLoader = () =>
+    <div className="Skills-loader-container">
+        <div className="Skills-loader" />
+    </div>;
+
+let renderError = () =>
+    <div className="Skills-section-error">
+        <div className="Skills-section-error-icon">(ReasonReact.string("ER"))</div>
+        (ReasonReact.string("Sorry! Something is wrong with my API!"))
+    </div>;
+
+let renderMain = (whatDescription, languages, frameworks) =>
+    <div className="Skills-section-info">
+        <div className="Skills-section-description">(ReasonReact.string(whatDescription))</div>
+        <div className="Skills-languages">
+            <div className="Skills-languages-description">(ReasonReact.string("Here are some languages I have experience with:"))</div>
+            <div className="Skills-languages-list">
+                (
+                    languages
+                    |> Array.of_list
+                    |> Array.map(({name, logoName, star}) =>
+                        <SkillTile
+                            key=name
+                            name
+                            logo=logoName
+                            star
+                        />
+                    )
+                    |> ReasonReact.array
+                )
+            </div>
+        </div>
+        <div className="Skills-frameworks">
+            <div className="Skills-frameworks-description">
+                (ReasonReact.string("And here are some frameworks, libraries, and tools I've used:"))
+                <div className="Skills-frameworks-list">
+                (
+                    frameworks
+                    |> Array.of_list
+                    |> Array.map(({name, logoName, star}) =>
+                        <SkillTile
+                            key=name
+                            name
+                            logo=logoName
+                            star
+                        />
+                    )
+                    |> ReasonReact.array
+                )
+            </div>
+            </div>
+        </div>
+    </div>;
+
+let component = ReasonReact.reducerComponent("Skills");
 
 let make = (_children) => {
     ...component,
@@ -106,6 +160,14 @@ let make = (_children) => {
             languages
         } = self.state;
 
+        let main =
+            switch (isLoading, hasErrored) {
+                | (true, false) => renderLoader()
+                | (false, true) => renderError()
+                | (false, false) => renderMain(whatDescription, languages, frameworks)
+                | _ => (ReasonReact.null)
+            };
+
         <div className="Skills">
             <div className="Skills-inner">
                 <div className="Skills-section">
@@ -137,34 +199,7 @@ let make = (_children) => {
                 </div>
                 <div className="Skills-section">
                     <div className="Skills-section-header">(ReasonReact.string("WHAT?"))</div>
-                    (
-                        switch (isLoading, hasErrored) {
-                            | (true, false) =>
-                                <div className="Skills-loader-container">
-                                    <div className="Skills-loader" />
-                                <div>
-                            | (false, true) =>
-                                <div className="Skills-section-error">
-                                    <div className="Skills-section-error-icon">
-                                        (ReasonReact.string("ER"))
-                                    </div>
-                                    (ReasonReact.string("Sorry! Something is wrong with my API!"))
-                                <div>
-                            | (false, false) =>
-                                <div className="Skills-section-info">
-                                    <div className="Skills-section-description">(ReasonReact.string(whatDescription))</div>
-                                    <div className="Skills-languages">
-                                        <div className="Skills-languages-description">(ReasonReact.string("Here are some languages I have experience with:"))</div>
-                                    </div>
-                                    <div className="Skills-frameworks">
-                                        <div className="Skills-frameworks-description">
-                                            (ReasonReact.string("And here are some frameworks, libraries, and tools I've used:"))
-                                        </div>
-                                    </div>
-                                </div>
-                            | _ => ReasonReact.null
-                        }
-                    )
+                    main
                 </div>
                 <div className="Skills-section">
                     <div className="Skills-section-header">(ReasonReact.string("WHERE?"))</div>
@@ -185,6 +220,7 @@ let make = (_children) => {
                     </div>
                     <div className="Skills-section-info">
                         <div className="Skills-section-employer-link">
+
                             <a
                                 className="Skills-section-employer-link"
                                 href="https://www.slalom.com/locations/chicago"
