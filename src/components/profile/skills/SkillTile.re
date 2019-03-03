@@ -8,9 +8,12 @@ let make = (~name, ~logo, ~star, _children) => {
         <div className="SkillTile">
             <div className="SkillTile-label">
                 <div className="SkillTile-text">
-                    (ReasonReact.string(name))
+                    (ReasonReact.string(name ++ " "))
                     (star ?
-                        ReasonReact.string("Star")
+                        <FontAwesomeIcon
+                            className="SkillTile-icon-star"
+                            icon={["fas", "star"]}
+                        />
                         : ReasonReact.null
                     )
                 </div>
@@ -19,7 +22,7 @@ let make = (~name, ~logo, ~star, _children) => {
                 <div className="SkillTile-image-cell">
                     <img
                         className="SkillTile-image"
-                        src=("./assets/logos/" ++ String.sub(logo, 0, String.length(logo) - 4) ++ ".png")
+                        src=Logo.get(logo)
                         alt=name
                     />
                 </div>

@@ -26,7 +26,12 @@ let make = (_children) => {
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            (ReasonReact.string("LI"))
+                            <FontAwesomeIcon
+                                className="ProfileInfo-social-icon"
+                                icon={["fab", "linkedin"]}
+                                size="2x"
+                                fixedWidth=true
+                            />
                         </a>
                         <a
                             className="ProfileInfo-social-link ProfileInfo-github-link"
@@ -34,7 +39,12 @@ let make = (_children) => {
                             target="_blank"
                             rel="noopener noreferrer"
                         >
-                            (ReasonReact.string("GH"))
+                            <FontAwesomeIcon
+                                className="ProfileInfo-social-icon"
+                                icon={["fab", "github"]}
+                                size="2x"
+                                fixedWidth=true
+                            />
                         </a>
                     </div>
                     <div className="ProfileInfo-resume-link">

@@ -3,6 +3,7 @@
 
 var React = require("react");
 var ReasonReact = require("reason-react/src/ReasonReact.js");
+var FontAwesomeIcon$ReasonProfile = require("../../common/font-awesome/FontAwesomeIcon.bs.js");
 
 require('./ProfileInfo.css')
 ;
@@ -48,12 +49,24 @@ function make(_children) {
                                           href: "https://www.linkedin.com/in/zacharywagner",
                                           rel: "noopener noreferrer",
                                           target: "_blank"
-                                        }, "LI"), React.createElement("a", {
+                                        }, ReasonReact.element(undefined, undefined, FontAwesomeIcon$ReasonProfile.make(/* :: */[
+                                                  "fab",
+                                                  /* :: */[
+                                                    "linkedin",
+                                                    /* [] */0
+                                                  ]
+                                                ], undefined, "ProfileInfo-social-icon", undefined, "2x", true, /* array */[]))), React.createElement("a", {
                                           className: "ProfileInfo-social-link ProfileInfo-github-link",
                                           href: "https://github.com/zwagner86",
                                           rel: "noopener noreferrer",
                                           target: "_blank"
-                                        }, "GH")), React.createElement("div", {
+                                        }, ReasonReact.element(undefined, undefined, FontAwesomeIcon$ReasonProfile.make(/* :: */[
+                                                  "fab",
+                                                  /* :: */[
+                                                    "github",
+                                                    /* [] */0
+                                                  ]
+                                                ], undefined, "ProfileInfo-social-icon", undefined, "2x", true, /* array */[])))), React.createElement("div", {
                                       className: "ProfileInfo-resume-link"
                                     }, React.createElement("a", {
                                           className: "ProfileInfo-resume-btn",

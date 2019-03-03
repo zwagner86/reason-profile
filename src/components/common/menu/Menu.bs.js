@@ -5,6 +5,7 @@ var Block = require("bs-platform/lib/js/block.js");
 var Curry = require("bs-platform/lib/js/curry.js");
 var React = require("react");
 var ReasonReact = require("reason-react/src/ReasonReact.js");
+var FontAwesomeIcon$ReasonProfile = require("../font-awesome/FontAwesomeIcon.bs.js");
 
 require('./Menu.css')
 ;
@@ -25,6 +26,8 @@ function make(_children) {
           /* render */(function (self) {
               var match = self[/* state */1][/* isMenuOpen */0];
               var menuClass = match ? "Menu Menu-is-open" : "Menu";
+              var match$1 = self[/* state */1][/* isMenuOpen */0];
+              var iconName = match$1 ? "times" : "bars";
               return React.createElement("div", {
                           className: menuClass
                         }, React.createElement("div", {
@@ -34,7 +37,13 @@ function make(_children) {
                                   onClick: (function (_event) {
                                       return Curry._1(self[/* send */3], /* Toggle */0);
                                     })
-                                }, "Menu")), React.createElement("div", {
+                                }, ReasonReact.element(undefined, undefined, FontAwesomeIcon$ReasonProfile.make(/* :: */[
+                                          "fas",
+                                          /* :: */[
+                                            iconName,
+                                            /* [] */0
+                                          ]
+                                        ], undefined, "Menu-toggle-icon", undefined, "3x", undefined, /* array */[])))), React.createElement("div", {
                               className: "Menu-links"
                             }, React.createElement("a", {
                                   className: "Menu-link",

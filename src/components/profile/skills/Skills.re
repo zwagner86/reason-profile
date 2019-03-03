@@ -85,7 +85,8 @@ let renderMain = (whatDescription, languages, frameworks) =>
         <div className="Skills-frameworks">
             <div className="Skills-frameworks-description">
                 (ReasonReact.string("And here are some frameworks, libraries, and tools I've used:"))
-                <div className="Skills-frameworks-list">
+            </div>
+            <div className="Skills-frameworks-list">
                 (
                     frameworks
                     |> Array.of_list
@@ -99,7 +100,6 @@ let renderMain = (whatDescription, languages, frameworks) =>
                     )
                     |> ReasonReact.array
                 )
-            </div>
             </div>
         </div>
     </div>;

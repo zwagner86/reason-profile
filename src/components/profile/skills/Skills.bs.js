@@ -76,12 +76,12 @@ function renderMain(whatDescription, languages, frameworks) {
                   className: "Skills-frameworks"
                 }, React.createElement("div", {
                       className: "Skills-frameworks-description"
-                    }, "And here are some frameworks, libraries, and tools I've used:", React.createElement("div", {
-                          className: "Skills-frameworks-list"
-                        }, $$Array.map((function (param) {
-                                var name = param[/* name */0];
-                                return ReasonReact.element(name, undefined, SkillTile$ReasonProfile.make(name, param[/* logoName */1], param[/* star */2], /* array */[]));
-                              }), $$Array.of_list(frameworks))))));
+                    }, "And here are some frameworks, libraries, and tools I've used:"), React.createElement("div", {
+                      className: "Skills-frameworks-list"
+                    }, $$Array.map((function (param) {
+                            var name = param[/* name */0];
+                            return ReasonReact.element(name, undefined, SkillTile$ReasonProfile.make(name, param[/* logoName */1], param[/* star */2], /* array */[]));
+                          }), $$Array.of_list(frameworks)))));
 }
 
 var component = ReasonReact.reducerComponent("Skills");

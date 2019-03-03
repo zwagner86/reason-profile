@@ -29,8 +29,13 @@
     "parcel-bundler": "1.11.0"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "1.2.15",
+    "@fortawesome/free-brands-svg-icons": "5.7.2",
+    "@fortawesome/free-solid-svg-icons": "5.7.2",
+    "@fortawesome/react-fontawesome": "0.1.4",
     "@glennsl/bs-json": "3.0.0",
     "bs-fetch": "0.3.1",
+    "bs-fontawesome": "1.0.0",
     "react": "16.8.3",
     "react-dom": "16.8.3",
     "reason-react": "0.5.3"

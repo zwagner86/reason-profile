@@ -2,8 +2,9 @@
 'use strict';
 
 var React = require("react");
-var $$String = require("bs-platform/lib/js/string.js");
 var ReasonReact = require("reason-react/src/ReasonReact.js");
+var Logo$ReasonProfile = require("./Logo.bs.js");
+var FontAwesomeIcon$ReasonProfile = require("../../common/font-awesome/FontAwesomeIcon.bs.js");
 
 require('./SkillTile.css')
 ;
@@ -28,14 +29,20 @@ function make(name, logo, star, _children) {
                               className: "SkillTile-label"
                             }, React.createElement("div", {
                                   className: "SkillTile-text"
-                                }, name, star ? "Star" : null)), React.createElement("div", {
+                                }, name + " ", star ? ReasonReact.element(undefined, undefined, FontAwesomeIcon$ReasonProfile.make(/* :: */[
+                                            "fas",
+                                            /* :: */[
+                                              "star",
+                                              /* [] */0
+                                            ]
+                                          ], undefined, "SkillTile-icon-star", undefined, undefined, undefined, /* array */[])) : null)), React.createElement("div", {
                               className: "SkillTile-image-block"
                             }, React.createElement("div", {
                                   className: "SkillTile-image-cell"
                                 }, React.createElement("img", {
                                       className: "SkillTile-image",
                                       alt: name,
-                                      src: "./assets/logos/" + ($$String.sub(logo, 0, logo.length - 4 | 0) + ".png")
+                                      src: Logo$ReasonProfile.get(logo)
                                     }))));
             }),
           /* initialState */component[/* initialState */10],

@@ -1,6 +1,6 @@
 .ProfileInfo {
     width: 100%;
-    background-color: #2f855f;
+    background-color: #DA4D3F;
     color: #ffffff;
     padding-left: 15px;
     padding-right: 15px;
@@ -75,9 +75,9 @@
     white-space: nowrap;
     vertical-align: middle;
     background-color: #ffffff;
-    border-color: #2f855f;
+    border-color: #DA4D3F;
     border-radius: 16px;
-    color: #2f855f;
+    color: #DA4D3F;
 }
 
 .ProfileInfo-resume-btn:hover,

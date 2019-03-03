@@ -17,6 +17,7 @@ let make = (_children) => {
         },
     render: self => {
         let menuClass = (self.state.isMenuOpen) ? "Menu Menu-is-open" : "Menu";
+        let iconName = (self.state.isMenuOpen) ? "times" : "bars";
 
         <div className=menuClass>
             <div className="Menu-toggle">
@@ -24,7 +25,11 @@ let make = (_children) => {
                     className="Menu-toggle-button"
                     onClick=(_event => self.send(Toggle))
                 >
-                    (ReasonReact.string("Menu"))
+                    <FontAwesomeIcon
+                        className="Menu-toggle-icon"
+                        icon={["fas", iconName]}
+                        size="3x"
+                    />
                 </button>
             </div>
             <div className="Menu-links">
