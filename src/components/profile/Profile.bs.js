@@ -3,6 +3,11 @@
 
 var React = require("react");
 var ReasonReact = require("reason-react/src/ReasonReact.js");
+var Skills$ReasonProfile = require("./skills/Skills.bs.js");
+var ProfileInfo$ReasonProfile = require("./profile-info/ProfileInfo.bs.js");
+
+require('./Profile.css')
+;
 
 var component = ReasonReact.statelessComponent("Profile");
 
@@ -18,7 +23,9 @@ function make(_children) {
           /* willUpdate */component[/* willUpdate */7],
           /* shouldUpdate */component[/* shouldUpdate */8],
           /* render */(function (_self) {
-              return React.createElement("div", undefined, "This is my app profile");
+              return React.createElement("div", {
+                          className: "Profile"
+                        }, ReasonReact.element(undefined, undefined, ProfileInfo$ReasonProfile.make(/* array */[])), ReasonReact.element(undefined, undefined, Skills$ReasonProfile.make(/* array */[])));
             }),
           /* initialState */component[/* initialState */10],
           /* retainedProps */component[/* retainedProps */11],
@@ -29,4 +36,4 @@ function make(_children) {
 
 exports.component = component;
 exports.make = make;
-/* component Not a pure module */
+/*  Not a pure module */

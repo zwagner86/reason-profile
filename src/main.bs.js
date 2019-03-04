@@ -3,8 +3,23 @@
 
 var ReactDOMRe = require("reason-react/src/ReactDOMRe.js");
 var ReasonReact = require("reason-react/src/ReasonReact.js");
-var App$Whatever = require("./App.bs.js");
+var App$ReasonProfile = require("./App.bs.js");
 
-ReactDOMRe.renderToElementWithId(ReasonReact.element(undefined, undefined, App$Whatever.make(/* array */[])), "app");
+require('./main.css')
+;
+
+const faCore = require('@fortawesome/fontawesome-svg-core');
+;
+
+const faBrandIcons = require('@fortawesome/free-brands-svg-icons');
+;
+
+const faSolidIcons = require('@fortawesome/free-solid-svg-icons');
+;
+
+faCore.library.add(faBrandIcons.fab, faSolidIcons.faBars, faSolidIcons.faStar, faSolidIcons.faTimes);
+;
+
+ReactDOMRe.renderToElementWithId(ReasonReact.element(undefined, undefined, App$ReasonProfile.make(/* array */[])), "app");
 
 /*  Not a pure module */

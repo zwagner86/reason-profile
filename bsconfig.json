@@ -1,5 +1,5 @@
 {
-    "name": "whatever",
+    "name": "reason-profile",
     "reason": {
         "react-jsx": 2
     },
@@ -13,7 +13,9 @@
     },
     "suffix": ".bs.js",
     "bs-dependencies": [
-        "reason-react"
+        "reason-react",
+        "bs-fetch",
+        "@glennsl/bs-json",
     ],
     "warnings": {
         "error": "+101"
