@@ -193,7 +193,7 @@ let make = (_children) => {
                     </div>
                     <div className="Skills-section-info">
                         <div className="Skills-section-description">
-                            (ReasonReact.string("I also made a versions of this page using React and Vue!  You can get there using the menu.  It really isn't any different.  I just wanted to be able to compare the frameworks firsthand."))
+                            (ReasonReact.string("I also made versions of this page using React and Vue!  You can get to those using the menu.  They really aren't any different.  I just wanted to be able to compare the frameworks firsthand."))
                         </div>
                     </div>
                 </div>

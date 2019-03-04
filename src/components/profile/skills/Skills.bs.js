@@ -137,7 +137,7 @@ function make(_children) {
                                       className: "Skills-section-info"
                                     }, React.createElement("div", {
                                           className: "Skills-section-description"
-                                        }, "I also made a versions of this page using React and Vue!  You can get there using the menu.  It really isn't any different.  I just wanted to be able to compare the frameworks firsthand."))), React.createElement("div", {
+                                        }, "I also made versions of this page using React and Vue!  You can get to those using the menu.  They really aren't any different.  I just wanted to be able to compare the frameworks firsthand."))), React.createElement("div", {
                                   className: "Skills-section"
                                 }, React.createElement("div", {
                                       className: "Skills-section-header"
