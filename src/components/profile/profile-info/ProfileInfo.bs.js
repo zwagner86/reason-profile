@@ -3,12 +3,11 @@
 
 var React = require("react");
 var ReasonReact = require("reason-react/src/ReasonReact.js");
+var PersonalSiteData = require("personal-site-data");
 var FontAwesomeIcon$ReasonProfile = require("../../common/font-awesome/FontAwesomeIcon.bs.js");
 
 require('./ProfileInfo.css')
 ;
-
-var profilePic = (require('./assets/prof-pic.png'));
 
 var component = ReasonReact.statelessComponent("ProfileInfo");
 
@@ -35,7 +34,7 @@ function make(_children) {
                                     }, React.createElement("img", {
                                           className: "ProfileInfo-pic-img",
                                           alt: "Zachary Wagner Profile",
-                                          src: profilePic
+                                          src: PersonalSiteData.profileImage
                                         })), React.createElement("h1", undefined, "Hey, I'm Zach,"), React.createElement("h4", {
                                       className: "ProfileInfo-h4"
                                     }, "a Front End Engineer"), React.createElement("h4", {
@@ -80,7 +79,6 @@ function make(_children) {
         ];
 }
 
-exports.profilePic = profilePic;
 exports.component = component;
 exports.make = make;
 /*  Not a pure module */

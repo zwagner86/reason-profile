@@ -1,173 +1,10 @@
 [%%raw "require('./Skills.css')"];
 
-type skillItem = {
-    name: string,
-    logoName: string,
-    star: bool
-};
-
-type skillData = {
-    languages: list(skillItem),
-    frameworks: list(skillItem),
-    whatDescription: string
-};
-
-type skillDataJson = {
-    data: skillData
-};
-
-type state = {
-    languages: list(skillItem),
-    frameworks: list(skillItem),
-    whatDescription: string,
-    isLoading: bool,
-    hasErrored: bool
-};
-
-type action =
-    | FetchSkills
-    | UpdateSkills(skillDataJson)
-    | FetchSkillsErrored;
-
-module Decode = {
-    let decodeSkill = json =>
-        Json.Decode.{
-            name: json |> field("name", string),
-            logoName: json |> field("logoName", string),
-            star: json |> field("star", bool)
-        };
-    
-    let decodeSkills = json =>
-        Json.Decode.{
-            frameworks: json |> field("frameworks", list(decodeSkill)),
-            languages: json |> field("languages", list(decodeSkill)),
-            whatDescription: json |> field("whatDescription", string)
-        };
-
-    let decodeSkillsData = json =>
-        Json.Decode.{
-            data: json |> field("data", decodeSkills)
-        };
-};
-
-let renderLoader = () =>
-    <div className="Skills-loader-container">
-        <div className="Skills-loader" />
-    </div>;
-
-let renderError = () =>
-    <div className="Skills-section-error">
-        <div className="Skills-section-error-icon">(ReasonReact.string("ER"))</div>
-        (ReasonReact.string("Sorry! Something is wrong with my API!"))
-    </div>;
-
-let renderMain = (whatDescription, languages, frameworks) =>
-    <div className="Skills-section-info">
-        <div className="Skills-section-description">(ReasonReact.string(whatDescription))</div>
-        <div className="Skills-languages">
-            <div className="Skills-languages-description">(ReasonReact.string("Here are some languages I have experience with:"))</div>
-            <div className="Skills-languages-list">
-                (
-                    languages
-                    |> Array.of_list
-                    |> Array.map(({name, logoName, star}) =>
-                        <SkillTile
-                            key=name
-                            name
-                            logo=logoName
-                            star
-                        />
-                    )
-                    |> ReasonReact.array
-                )
-            </div>
-        </div>
-        <div className="Skills-frameworks">
-            <div className="Skills-frameworks-description">
-                (ReasonReact.string("And here are some frameworks, libraries, and tools I've used:"))
-            </div>
-            <div className="Skills-frameworks-list">
-                (
-                    frameworks
-                    |> Array.of_list
-                    |> Array.map(({name, logoName, star}) =>
-                        <SkillTile
-                            key=name
-                            name
-                            logo=logoName
-                            star
-                        />
-                    )
-                    |> ReasonReact.array
-                )
-            </div>
-        </div>
-    </div>;
-
-let component = ReasonReact.reducerComponent("Skills");
+let component = ReasonReact.statelessComponent("Skills");
 
 let make = (_children) => {
     ...component,
-    initialState: () => {
-        languages: [],
-        frameworks: [],
-        whatDescription: "",
-        isLoading: true,
-        hasErrored: false
-    },
-    reducer: (action, state) =>
-        switch (action) {
-            | FetchSkills =>
-                ReasonReact.UpdateWithSideEffects(
-                    {...state, isLoading: true, hasErrored: false},
-                    (
-                        self => {
-                            Js.Promise.(
-                                Fetch.fetch("https://www.zacharywagner.net/api/v1/skills")
-                                |> then_(Fetch.Response.json)
-                                |> then_(json =>
-                                    json
-                                    |> Decode.decodeSkillsData
-                                    |> (skills => self.send(UpdateSkills(skills)))
-                                    |> resolve
-                                )
-                                |> catch(_err =>
-                                    Js.Promise.resolve(self.send(FetchSkillsErrored))
-                                )
-                                |> ignore
-                            )
-                        }
-                    )
-                )
-            | UpdateSkills(skillDataJson) =>
-                ReasonReact.Update({
-                    isLoading: false,
-                    hasErrored: false,
-                    languages: skillDataJson.data.languages,
-                    frameworks: skillDataJson.data.frameworks,
-                    whatDescription: skillDataJson.data.whatDescription
-                })
-            | FetchSkillsErrored =>
-                ReasonReact.Update({...state, isLoading: false, hasErrored: true})
-        },
-    didMount: self => self.send(FetchSkills),
-    render: self => {
-        let {
-            isLoading,
-            hasErrored,
-            whatDescription,
-            frameworks,
-            languages
-        } = self.state;
-
-        let main =
-            switch (isLoading, hasErrored) {
-                | (true, false) => renderLoader()
-                | (false, true) => renderError()
-                | (false, false) => renderMain(whatDescription, languages, frameworks)
-                | _ => (ReasonReact.null)
-            };
-
+    render: _self => {
         <div className="Skills">
             <div className="Skills-inner">
                 <div className="Skills-section">
@@ -199,41 +36,69 @@ let make = (_children) => {
                 </div>
                 <div className="Skills-section">
                     <div className="Skills-section-header">(ReasonReact.string("WHAT?"))</div>
-                    main
+                    <div className="Skills-section-info">
+                        <div className="Skills-section-description">(ReasonReact.string(PersonalSiteData.whatSectionDescription))</div>
+                        <div className="Skills-languages">
+                            <div className="Skills-languages-description">(ReasonReact.string("Here are some languages I have experience with:"))</div>
+                            <div className="Skills-languages-list">
+                                (
+                                    PersonalSiteData.languages
+                                    |> Array.map(language => {
+                                        <SkillTile
+                                            key=language##name
+                                            name=language##name
+                                            logo=language##logoName
+                                            star=language##star
+                                        />
+                                    })
+                                    |> ReasonReact.array
+                                )
+                            </div>
+                        </div>
+                        <div className="Skills-frameworks">
+                            <div className="Skills-frameworks-description">
+                                (ReasonReact.string("And here are some frameworks, libraries, and tools I've used:"))
+                            </div>
+                            <div className="Skills-frameworks-list">
+                                (
+                                    PersonalSiteData.frameworks
+                                    |> Array.map(framework => {
+                                        <SkillTile
+                                            key=framework##name
+                                            name=framework##name
+                                            logo=framework##logoName
+                                            star=framework##star
+                                        />
+                                    })
+                                    |> ReasonReact.array
+                                )
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div className="Skills-section">
                     <div className="Skills-section-header">(ReasonReact.string("WHERE?"))</div>
-                    <div className="Skills-section-info">
-                        <div>
-                            <a
-                                className="Skills-section-employer-link"
-                                href="https://www.spothero.com"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                (ReasonReact.string("SpotHero"))
-                            </a>
-                        </div>
-                        <div>(ReasonReact.string("December 2016 - Present"))</div>
-                        <div>(ReasonReact.string("Chicago, IL"))</div>
-                        <div>(ReasonReact.string("Front End Engineer"))</div>
-                    </div>
-                    <div className="Skills-section-info">
-                        <div className="Skills-section-employer-link">
-
-                            <a
-                                className="Skills-section-employer-link"
-                                href="https://www.slalom.com/locations/chicago"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                (ReasonReact.string("Slalom Consulting"))
-                            </a>
-                        </div>
-                        <div>(ReasonReact.string("December 2012 - December 2016"))</div>
-                        <div>(ReasonReact.string("Chicago, IL"))</div>
-                        <div>(ReasonReact.string("Senior Software Engineer"))</div>
-                    </div>
+                    (
+                        PersonalSiteData.companies
+                        |> Array.map(company => {
+                            <div className="Skills-section-info">
+                                <div>
+                                    <a
+                                        className="Skills-section-employer-link"
+                                        href=company##url
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        (ReasonReact.string(company##name))
+                                    </a>
+                                </div>
+                                <div>(ReasonReact.string(company##fromDate ++ " - " ++ company##toDate))</div>
+                                <div>(ReasonReact.string(company##location))</div>
+                                <div>(ReasonReact.string(company##title))</div>
+                            </div>
+                        })
+                        |> ReasonReact.array
+                    )
                 </div>
             </div>
         </div>

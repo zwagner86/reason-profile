@@ -25,30 +25,30 @@ let webpackLogo : string = [%raw "require('./assets/logos/webpack.png')"];
 
 let get = logoName => {
     switch (logoName) {
-        | "angularLogo" => angularLogo
-        | "bootstrapLogo" => bootstrapLogo
-        | "cplusplusLogo" => cplusplusLogo
-        | "cssLogo" => cssLogo
-        | "expressLogo" => expressLogo
-        | "gruntLogo" => gruntLogo
-        | "gulpLogo" => gulpLogo
-        | "html5Logo" => html5Logo
-        | "jasmineLogo" => jasmineLogo
-        | "javaLogo" => javaLogo
-        | "javascriptLogo" => javascriptLogo
-        | "jqueryLogo" => jqueryLogo
-        | "karmaLogo" => karmaLogo
-        | "lessLogo" => lessLogo
-        | "nodeLogo" => nodeLogo
-        | "pugLogo" => pugLogo
-        | "pythonLogo" => pythonLogo
-        | "reactLogo" => reactLogo
-        | "reduxLogo" => reduxLogo
-        | "sassLogo" => sassLogo
-        | "springLogo" => springLogo
-        | "typescriptLogo" => typescriptLogo
-        | "vueLogo" => vueLogo
-        | "webpackLogo" => webpackLogo
+        | "angular" => angularLogo
+        | "bootstrap" => bootstrapLogo
+        | "cplusplus" => cplusplusLogo
+        | "css" => cssLogo
+        | "express" => expressLogo
+        | "grunt" => gruntLogo
+        | "gulp" => gulpLogo
+        | "html5" => html5Logo
+        | "jasmine" => jasmineLogo
+        | "java" => javaLogo
+        | "javascript" => javascriptLogo
+        | "jquery" => jqueryLogo
+        | "karma" => karmaLogo
+        | "less" => lessLogo
+        | "node" => nodeLogo
+        | "pug" => pugLogo
+        | "python" => pythonLogo
+        | "react" => reactLogo
+        | "redux" => reduxLogo
+        | "sass" => sassLogo
+        | "spring" => springLogo
+        | "typescript" => typescriptLogo
+        | "vue" => vueLogo
+        | "webpack" => webpackLogo
         | _ => ""
     }
 };

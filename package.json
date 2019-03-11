@@ -36,6 +36,7 @@
     "@glennsl/bs-json": "3.0.0",
     "bs-fetch": "0.3.1",
     "bs-fontawesome": "1.0.0",
+    "personal-site-data": "https://github.com/zwagner86/personal-site-data.git",
     "react": "16.8.3",
     "react-dom": "16.8.3",
     "reason-react": "0.5.3"

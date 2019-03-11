@@ -1,5 +1,4 @@
 [%%raw "require('./ProfileInfo.css')"];
-let profilePic : string = [%raw "require('./assets/prof-pic.png')"];
 
 let component = ReasonReact.statelessComponent("ProfileInfo");
 
@@ -12,7 +11,7 @@ let make = (_children) => {
                     <div className="ProfileInfo-pic-container">
                         <img
                             className="ProfileInfo-pic-img"
-                            src={profilePic}
+                            src={PersonalSiteData.profileImage}
                             alt="Zachary Wagner Profile" />
                     </div>
                     <h1>(ReasonReact.string("Hey, I'm Zach,"))</h1>

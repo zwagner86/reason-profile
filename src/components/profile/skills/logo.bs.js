@@ -52,53 +52,53 @@ var webpackLogo = (require('./assets/logos/webpack.png'));
 
 function get(logoName) {
   switch (logoName) {
-    case "angularLogo" : 
+    case "angular" : 
         return angularLogo;
-    case "bootstrapLogo" : 
+    case "bootstrap" : 
         return bootstrapLogo;
-    case "cplusplusLogo" : 
+    case "cplusplus" : 
         return cplusplusLogo;
-    case "cssLogo" : 
+    case "css" : 
         return cssLogo;
-    case "expressLogo" : 
+    case "express" : 
         return expressLogo;
-    case "gruntLogo" : 
+    case "grunt" : 
         return gruntLogo;
-    case "gulpLogo" : 
+    case "gulp" : 
         return gulpLogo;
-    case "html5Logo" : 
+    case "html5" : 
         return html5Logo;
-    case "jasmineLogo" : 
+    case "jasmine" : 
         return jasmineLogo;
-    case "javaLogo" : 
+    case "java" : 
         return javaLogo;
-    case "javascriptLogo" : 
+    case "javascript" : 
         return javascriptLogo;
-    case "jqueryLogo" : 
+    case "jquery" : 
         return jqueryLogo;
-    case "karmaLogo" : 
+    case "karma" : 
         return karmaLogo;
-    case "lessLogo" : 
+    case "less" : 
         return lessLogo;
-    case "nodeLogo" : 
+    case "node" : 
         return nodeLogo;
-    case "pugLogo" : 
+    case "pug" : 
         return pugLogo;
-    case "pythonLogo" : 
+    case "python" : 
         return pythonLogo;
-    case "reactLogo" : 
+    case "react" : 
         return reactLogo;
-    case "reduxLogo" : 
+    case "redux" : 
         return reduxLogo;
-    case "sassLogo" : 
+    case "sass" : 
         return sassLogo;
-    case "springLogo" : 
+    case "spring" : 
         return springLogo;
-    case "typescriptLogo" : 
+    case "typescript" : 
         return typescriptLogo;
-    case "vueLogo" : 
+    case "vue" : 
         return vueLogo;
-    case "webpackLogo" : 
+    case "webpack" : 
         return webpackLogo;
     default:
       return "";
