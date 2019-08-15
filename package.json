@@ -37,7 +37,7 @@
     "bs-fetch": "0.3.1",
     "bs-fontawesome": "1.0.0",
     "react": "16.9.0",
-    "react-dom": "16.8.3",
+    "react-dom": "16.9.0",
     "reason-react": "0.5.3"
   }
 }
