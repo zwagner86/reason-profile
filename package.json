@@ -38,6 +38,6 @@
     "bs-fontawesome": "1.0.0",
     "react": "16.9.0",
     "react-dom": "16.9.0",
-    "reason-react": "0.5.3"
+    "reason-react": "0.7.0"
   }
 }
