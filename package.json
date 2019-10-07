@@ -26,7 +26,7 @@
   "devDependencies": {
     "bs-platform": "5.0.6",
     "bsb-js": "1.1.7",
-    "parcel-bundler": "1.12.3"
+    "parcel-bundler": "1.12.4"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "1.2.25",
