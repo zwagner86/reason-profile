@@ -18,7 +18,7 @@ let make = (_children) => {
                     <h1>(ReasonReact.string("Hey, I'm Zach,"))</h1>
                     <h4 className="ProfileInfo-h4">(ReasonReact.string("a Front End Engineer"))</h4>
                     <h4 className="ProfileInfo-h4">(ReasonReact.string("working in Chicago"))</h4>
-                    <h4 className="ProfileInfo-h4">(ReasonReact.string("for SpotHero"))</h4>
+                    <h4 className="ProfileInfo-h4">(ReasonReact.string("for Rippleshot"))</h4>
                     <div className="ProfileInfo-social-icons">
                         <a
                             className="ProfileInfo-social-link ProfileInfo-linkedin-link"

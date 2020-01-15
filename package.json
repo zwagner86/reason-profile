@@ -24,20 +24,20 @@
   },
   "homepage": "https://github.com/zwagner86/reason-profile#readme",
   "devDependencies": {
-    "bs-platform": "5.0.6",
+    "bs-platform": "7.0.1",
     "bsb-js": "1.1.7",
-    "parcel-bundler": "1.12.3"
+    "parcel-bundler": "1.12.4"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "1.2.25",
-    "@fortawesome/free-brands-svg-icons": "5.11.2",
-    "@fortawesome/free-solid-svg-icons": "5.11.2",
-    "@fortawesome/react-fontawesome": "0.1.5",
+    "@fortawesome/fontawesome-svg-core": "1.2.26",
+    "@fortawesome/free-brands-svg-icons": "5.12.0",
+    "@fortawesome/free-solid-svg-icons": "5.12.0",
+    "@fortawesome/react-fontawesome": "0.1.8",
     "@glennsl/bs-json": "5.0.1",
     "bs-fetch": "0.5.0",
-    "bs-fontawesome": "1.0.0",
-    "react": "16.10.1",
-    "react-dom": "16.10.1",
+    "bs-fontawesome": "1.0.1",
+    "react": "16.12.0",
+    "react-dom": "16.12.0",
     "reason-react": "0.7.0"
   }
 }

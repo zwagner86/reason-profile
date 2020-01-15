@@ -36,7 +36,7 @@ module Decode = {
             logoName: json |> field("logoName", string),
             star: json |> field("star", bool)
         };
-    
+
     let decodeSkills = json =>
         Json.Decode.{
             frameworks: json |> field("frameworks", list(decodeSkill)),
@@ -207,6 +207,21 @@ let make = (_children) => {
                         <div>
                             <a
                                 className="Skills-section-employer-link"
+                                href="http://rippleshot.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                (ReasonReact.string("Rippleshot"))
+                            </a>
+                        </div>
+                        <div>(ReasonReact.string("September 2019 - Present"))</div>
+                        <div>(ReasonReact.string("Chicago, IL"))</div>
+                        <div>(ReasonReact.string("Front End Engineer"))</div>
+                    </div>
+                    <div className="Skills-section-info">
+                        <div>
+                            <a
+                                className="Skills-section-employer-link"
                                 href="https://www.spothero.com"
                                 target="_blank"
                                 rel="noopener noreferrer"
@@ -214,7 +229,7 @@ let make = (_children) => {
                                 (ReasonReact.string("SpotHero"))
                             </a>
                         </div>
-                        <div>(ReasonReact.string("December 2016 - Present"))</div>
+                        <div>(ReasonReact.string("December 2016 - August 2019"))</div>
                         <div>(ReasonReact.string("Chicago, IL"))</div>
                         <div>(ReasonReact.string("Front End Engineer"))</div>
                     </div>
