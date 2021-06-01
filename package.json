@@ -33,7 +33,7 @@
     "@fortawesome/free-brands-svg-icons": "5.12.0",
     "@fortawesome/free-solid-svg-icons": "5.12.0",
     "@fortawesome/react-fontawesome": "0.1.8",
-    "@glennsl/bs-json": "5.0.1",
+    "@glennsl/bs-json": "5.0.3",
     "bs-fetch": "0.5.0",
     "bs-fontawesome": "1.0.1",
     "react": "16.12.0",
